@@ -8,6 +8,7 @@ export default function Accordion() {
     const [selected, setSelected] = useState(null);
     const [enableMultiSelection, setEnableMultiSelection] = useState(false);
     const [multiple, setMultiple] = useState([]);
+    const [buttonText, setButtonText] = useState("Enable");
 
 
     function singleSelection(getCurId) {
@@ -17,7 +18,7 @@ export default function Accordion() {
     function multiSelection(getCurId) {
         let cpmultiple = [...multiple]
         const findIndexOfCurrId = cpmultiple.indexOf(getCurId);
-        
+
         console.log(findIndexOfCurrId);
         if (findIndexOfCurrId === -1) cpmultiple.push(getCurId)
         else cpmultiple.splice(findIndexOfCurrId, 1);
@@ -25,9 +26,13 @@ export default function Accordion() {
         setMultiple(cpmultiple);
     }
 
-    console.log(selected, multiple);
     return (<div className="wrapper">
-        <button onClick={() => setEnableMultiSelection(!enableMultiSelection)}>Enable Multiple Selection</button>
+        <button onClick={() => {
+            setEnableMultiSelection(!enableMultiSelection);
+            buttonText === "Enable" ? setButtonText("Disable") : setButtonText("Enable");
+        }}>
+            {buttonText} Multiple Selection
+        </button>
         <div className="accordion">
             {
                 data && data.length > 0 ?
@@ -42,7 +47,7 @@ export default function Accordion() {
                             <span>+</span>
                         </div>
                         {
-                            selected === dataItem.id || (enableMultiSelection && multiple.indexOf(dataItem.id) !== -1)  ?
+                            selected === dataItem.id || (enableMultiSelection && multiple.indexOf(dataItem.id) !== -1) ?
                                 <div className="content">
                                     {dataItem.answer}
                                 </div>

@@ -21,6 +21,8 @@
     background-color: #8fed0c;
     border: none;
     border: 2px solid lightgreen;
+    font-weight: bold;
+    font-size: medium;
     border-radius: 10px;
     cursor: pointer;
 

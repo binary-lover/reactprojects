@@ -1,0 +1,21 @@
+.star-rating{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 2rem;
+    color: #000000;
+    background-color: rgb(255, 255, 255);
+    font-size: 50px;  
+    cursor: pointer;
+}
+.active{
+    color: #FFD700;
+}
+
+.inactive{
+    color: #000000;
+}
+
